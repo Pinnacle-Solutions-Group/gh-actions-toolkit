@@ -1,0 +1,26 @@
+{
+  "plan_version": 2,
+  "cli_version": "1.20.0",
+  "lineage": "SYNTHETIC-RENDERER-TEST-ONLY",
+  "serial": 3,
+  "plan": {
+    "resources.jobs.sample2_job": {
+      "action": "delete",
+      "remote_state": {
+        "name": "[dev deployment_sp] sample2_job",
+        "max_concurrent_runs": 4,
+        "tags": {
+          "dev": "sp_github_dab_poc"
+        },
+        "tasks": [
+          {
+            "task_key": "notebook_task",
+            "notebook_task": {
+              "notebook_path": "/Workspace/fixture/second_task"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

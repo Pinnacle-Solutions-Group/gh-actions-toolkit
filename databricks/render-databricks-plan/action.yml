@@ -1,0 +1,26 @@
+name: Render Databricks Bundle Plan
+description: >
+  Renders a `databricks bundle plan -o json` output as a Markdown summary
+  in the GitHub Actions job summary, giving operators an audit trail of
+  planned changes without downloading an artifact.
+
+inputs:
+  plan-path:
+    description: Path to the plan JSON file to render, relative to the calling workflow's working directory.
+    required: true
+  bundle-target:
+    description: Databricks bundle deployment target to display in the summary.
+    required: false
+    default: dev
+
+runs:
+  using: composite
+  steps:
+    - name: Render plan summary
+      shell: bash
+      env:
+        BUNDLE_TARGET: ${{ inputs.bundle-target }}
+        PLAN_PATH: ${{ inputs.plan-path }}
+        ACTION_PATH: ${{ github.action_path }}
+      run: |
+        python3 "$ACTION_PATH/render_plan.py" "$PLAN_PATH" >> "$GITHUB_STEP_SUMMARY"

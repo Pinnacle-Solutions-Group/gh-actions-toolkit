@@ -1,0 +1,62 @@
+{
+  "01_no_changes.json": {
+    "expected_counts": {
+      "create": 0,
+      "update": 0,
+      "delete": 0,
+      "skip": 1
+    },
+    "expect_success": true
+  },
+  "02_create_job.json": {
+    "expected_counts": {
+      "create": 1,
+      "update": 0,
+      "delete": 0,
+      "skip": 0
+    },
+    "expect_success": true
+  },
+  "03_update_job.json": {
+    "expected_counts": {
+      "create": 0,
+      "update": 1,
+      "delete": 0,
+      "skip": 0
+    },
+    "expect_success": true
+  },
+  "04_delete_job.json": {
+    "expected_counts": {
+      "create": 0,
+      "update": 0,
+      "delete": 1,
+      "skip": 0
+    },
+    "expect_success": true
+  },
+  "05_mixed_changes.json": {
+    "expected_counts": {
+      "create": 1,
+      "update": 1,
+      "delete": 1,
+      "skip": 1
+    },
+    "expect_success": true
+  },
+  "06_unknown_action.json": {
+    "expected_counts": null,
+    "expect_success": false,
+    "expected_error": "Unsupported Databricks plan action"
+  },
+  "07_malformed_plan.json": {
+    "expected_counts": null,
+    "expect_success": false,
+    "expected_error": "Expecting"
+  },
+  "08_wrong_plan_shape.json": {
+    "expected_counts": null,
+    "expect_success": false,
+    "expected_error": "Plan JSON missing a 'plan' object"
+  }
+}
